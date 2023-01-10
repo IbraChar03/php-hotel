@@ -52,6 +52,11 @@
 </head>
 
 <body>
+    <form action="">
+        <input type="checkbox" id="parking" name="parking">
+        <label for="parking">Parking</label><br>
+
+    </form>
     <table class="table">
         <thead>
             <tr>
@@ -65,12 +70,13 @@
         </thead>
         <tbody>
             <?php
-            foreach ($hotels as $hotel) {
+            foreach ($hotels as $key => $hotel) {
                 $name = $hotel["name"];
                 $description = $hotel["description"];
                 $parking = $hotel["parking"];
                 $vote = $hotel["vote"];
                 $distance = $hotel["distance_to_center"];
+
                 echo "<tr>";
                 echo "<td>" . $name . "</td>";
                 echo "<td>" . $description . "</td>";
@@ -83,6 +89,7 @@
             ?>
         </tbody>
     </table>
+
 
 </body>
 
