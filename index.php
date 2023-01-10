@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Document</title>
+
     <?php
+
     $hotels = [
 
         [
@@ -52,9 +54,10 @@
 </head>
 
 <body>
-    <form action="">
-        <input type="checkbox" id="parking" name="parking">
-        <label for="parking">Parking</label><br>
+    <form>
+        <input type="checkbox" name="parkingCheck">
+        <label>Parking</label>
+        <input type="submit" value="SEARCH">
 
     </form>
     <table class="table">
@@ -71,24 +74,33 @@
         <tbody>
             <?php
             foreach ($hotels as $key => $hotel) {
+                $park = $_GET["parkingCheck"];
                 $name = $hotel["name"];
                 $description = $hotel["description"];
                 $parking = $hotel["parking"];
                 $vote = $hotel["vote"];
                 $distance = $hotel["distance_to_center"];
+                if ($_GET['parkingCheck'] == 'on' && $parking === false) {
 
-                echo "<tr>";
-                echo "<td>" . $name . "</td>";
-                echo "<td>" . $description . "</td>";
-                echo $parking === false ? "<td>" . "No" . "</td>" : "<td>" . "Yes" . "</td>";
-                echo "<td>" . $vote . "/5" . "</td>";
-                echo "<td>" . $distance . " km" . "</td>";
-                echo "</tr>";
+                } else {
+
+                    echo "<tr>";
+                    echo `<tr class="<?=($park=='on' && $parking === false?'dispBlock':'')?>"></tr>`;
+                    echo "<td>" . $name . "</td>";
+                    echo "<td>" . $description . "</td>";
+                    echo $parking === false ? "<td>" . "No" . "</td>" : "<td>" . "Yes" . "</td>";
+                    echo "<td>" . $vote . "/5" . "</td>";
+                    echo "<td>" . $distance . " km" . "</td>";
+                    echo "</tr>";
+                }
             }
 
             ?>
         </tbody>
     </table>
+    <?php
+
+    ?>
 
 
 </body>
