@@ -10,7 +10,25 @@
     <title>Document</title>
 
     <?php
+    $listName = [
+        [
+            "Name"
+        ],
+        [
+            "Description"
+        ],
+        [
+            "Parking"
+        ],
+        [
+            "Ratings"
+        ],
+        [
+            "Distance To Center"
+        ],
 
+
+    ];
     $hotels = [
 
         [
@@ -63,11 +81,13 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Parking</th>
-                <th scope="col">Rating</th>
-                <th scope="col">Distance To Center</th>
+                <?php
+                foreach ($listName as $arrayNames) {
+                    foreach ($arrayNames as $name) {
+                        echo "<th>" . $name . "</th>";
+                    }
+                }
+                ?>
 
             </tr>
         </thead>
@@ -85,7 +105,6 @@
                 } else {
 
                     echo "<tr>";
-                    echo `<tr class="<?=($park=='on' && $parking === false?'dispBlock':'')?>"></tr>`;
                     echo "<td>" . $name . "</td>";
                     echo "<td>" . $description . "</td>";
                     echo $parking === false ? "<td>" . "No" . "</td>" : "<td>" . "Yes" . "</td>";
@@ -101,7 +120,6 @@
     <?php
 
     ?>
-
 
 </body>
 
